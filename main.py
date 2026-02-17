@@ -32,13 +32,3 @@ async def similarity(request: SimilarityRequest):
     scored = [(cosine_sim(query_vec, embed(doc)), doc) for doc in request.docs]
     scored.sort(reverse=True)
     return {"matches": [doc for _, doc in scored[:3]]}
-```
-
----
-
-**File 2: `requirements.txt`**
-```
-fastapi
-uvicorn
-openai
-numpy
